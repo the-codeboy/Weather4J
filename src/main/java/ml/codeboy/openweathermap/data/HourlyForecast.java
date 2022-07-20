@@ -1,4 +1,4 @@
-package ml.codeboy.data;
+package ml.codeboy.openweathermap.data;
 
 public class HourlyForecast {
     int dt;

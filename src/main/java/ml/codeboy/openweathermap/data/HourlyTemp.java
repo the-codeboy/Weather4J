@@ -1,4 +1,4 @@
-package ml.codeboy.data;
+package ml.codeboy.openweathermap.data;
 
 public class HourlyTemp {
     float temp,feels_like,temp_min,temp_max;

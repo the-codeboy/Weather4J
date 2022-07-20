@@ -1,13 +1,14 @@
-package ml.codeboy;
+package ml.codeboy.openweathermap;
 
-import ml.codeboy.data.ApiResponse;
+import ml.codeboy.Util;
+import ml.codeboy.openweathermap.data.ApiResponse;
 
 import java.io.IOException;
 
-public class Weather4J {
+public class OpenWeatherApi {
     private final String apiKey;
 
-    public Weather4J(String apiKey) {
+    public OpenWeatherApi(String apiKey) {
         this.apiKey = apiKey;
     }
 
