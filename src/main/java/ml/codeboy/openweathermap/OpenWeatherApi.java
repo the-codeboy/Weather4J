@@ -1,9 +1,12 @@
 package ml.codeboy.openweathermap;
 
+import com.google.gson.reflect.TypeToken;
 import ml.codeboy.Util;
 import ml.codeboy.openweathermap.data.ApiResponse;
+import ml.codeboy.openweathermap.data.Location;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 public class OpenWeatherApi {
     private final String apiKey;
@@ -20,6 +23,21 @@ public class OpenWeatherApi {
         url = url.replace("{units}", units);
         url = url.replace("{lang}", lang);
         return Util.getObject(url, ApiResponse.class);
+    }
+
+    public Location getLocation(String city){
+        String url = "http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={API key}";
+        url = url.replace("{city}", city);
+        url = url.replace("{API key}", apiKey);
+        Type locationsArray = new TypeToken<Location[]>(){}.getType();
+        try {
+            Location[]locations=Util.getObject(url, locationsArray);
+            if(locations.length==0)
+                throw new RuntimeException("Can not find city "+city);
+            return locations[0];
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
