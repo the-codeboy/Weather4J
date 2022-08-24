@@ -26,7 +26,7 @@ public class OpenWeatherApi {
     }
 
     public Location getLocation(String city){
-        String url = "http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={API key}";
+        String url = "https://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={API key}";
         url = url.replace("{city}", city);
         url = url.replace("{API key}", apiKey);
         Type locationsArray = new TypeToken<Location[]>(){}.getType();
